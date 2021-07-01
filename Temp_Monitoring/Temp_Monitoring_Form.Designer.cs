@@ -49,6 +49,7 @@
             this.tbOtchet = new System.Windows.Forms.TextBox();
             this.btGraf = new System.Windows.Forms.Button();
             this.mtbDate = new System.Windows.Forms.MaskedTextBox();
+            this.btClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrafik)).BeginInit();
             this.SuspendLayout();
             // 
@@ -211,6 +212,7 @@
             // 
             this.tbOtchet.Location = new System.Drawing.Point(25, 222);
             this.tbOtchet.Name = "tbOtchet";
+            this.tbOtchet.ReadOnly = true;
             this.tbOtchet.Size = new System.Drawing.Size(531, 20);
             this.tbOtchet.TabIndex = 15;
             // 
@@ -233,11 +235,22 @@
             this.mtbDate.TabIndex = 17;
             this.mtbDate.ValidatingType = typeof(System.DateTime);
             // 
+            // btClear
+            // 
+            this.btClear.Location = new System.Drawing.Point(652, 407);
+            this.btClear.Name = "btClear";
+            this.btClear.Size = new System.Drawing.Size(75, 23);
+            this.btClear.TabIndex = 18;
+            this.btClear.Text = "clear";
+            this.btClear.UseVisualStyleBackColor = true;
+            this.btClear.Click += new System.EventHandler(this.btClear_Click);
+            // 
             // Temp_Monitoring_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 573);
+            this.Controls.Add(this.btClear);
             this.Controls.Add(this.mtbDate);
             this.Controls.Add(this.btGraf);
             this.Controls.Add(this.tbOtchet);
@@ -286,6 +299,7 @@
         private System.Windows.Forms.TextBox tbOtchet;
         private System.Windows.Forms.Button btGraf;
         private System.Windows.Forms.MaskedTextBox mtbDate;
+        private System.Windows.Forms.Button btClear;
     }
 }
 

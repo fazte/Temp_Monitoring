@@ -13,11 +13,21 @@ namespace Temp_Monitoring
 {
     public partial class Temp_Monitoring_Form : Form
     {
+        int maxCount = 0;
+        int minCount = 0;
+        int maxHours;
+        int maxMinute;
+        int minHours;
+        int minMinute;
+
         public Temp_Monitoring_Form()
         {
             InitializeComponent();
         }
-
+        private void Counter()
+        {
+            
+        }
         private void lbTemp_Click(object sender, EventArgs e)
         {}
 
@@ -43,8 +53,7 @@ namespace Temp_Monitoring
         {
             int norma;
             DateTime time;
-            int maxCount = 0;
-            int minCount = 0;
+           
             try
             {
                 time = Convert.ToDateTime(mtbDate.Text);
@@ -80,15 +89,23 @@ namespace Temp_Monitoring
                     dgvGrafik[1, i].Value = numbers[i];
                     dgvGrafik[2, i].Value = norma;
                     dgvGrafik[3, i].Value = numbers[i] - norma;
-                    /*int count = Convert.ToInt32(dgvGrafik[3, i].Value);
-                    if (numbers[i] > 0 && count > 0 && count <= Convert.ToInt32(tbMax))
+                    int count = Convert.ToInt32(dgvGrafik[3, i].Value);
+                    if (numbers[i] > 0 && count > 0 && count <= Convert.ToInt32(tbMax.Text))
                     {
                         maxCount += 1;
                     }
-                    if (numbers[i] < 0 && count < 0 && count >= Convert.ToInt32(tbMin))
+                    else 
+                    {
+                        continue;
+                    }
+                    if (numbers[i] < 0 && count < 0 && count >= Convert.ToInt32(tbMin.Text))
                     {
                         minCount += 1;
-                    }*/
+                    }
+                    else
+                    {
+                        continue;
+                    }
 
                 }
             }
@@ -102,6 +119,16 @@ namespace Temp_Monitoring
         private void btGraf_Click(object sender, EventArgs e)
         {
             GrafikFish();
+        }
+
+        private void btClear_Click(object sender, EventArgs e)
+        {
+            dgvGrafik.Rows.Clear();
+            tbTemp.Clear();
+            tbOtchet.Clear();
+            mtbDate.Clear();
+            maxCount = 0;
+            minCount = 0;
         }
     }
 }
