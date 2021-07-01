@@ -38,7 +38,6 @@
             this.lbMin = new System.Windows.Forms.Label();
             this.lbDate = new System.Windows.Forms.Label();
             this.lbTemp = new System.Windows.Forms.Label();
-            this.tbFish = new System.Windows.Forms.TextBox();
             this.tbMax = new System.Windows.Forms.TextBox();
             this.tbMin = new System.Windows.Forms.TextBox();
             this.tbTimeMax = new System.Windows.Forms.TextBox();
@@ -46,10 +45,13 @@
             this.lbTime = new System.Windows.Forms.Label();
             this.tbTemp = new System.Windows.Forms.TextBox();
             this.lbOtchet = new System.Windows.Forms.Label();
-            this.tbOtchet = new System.Windows.Forms.TextBox();
             this.btGraf = new System.Windows.Forms.Button();
             this.mtbDate = new System.Windows.Forms.MaskedTextBox();
             this.btClear = new System.Windows.Forms.Button();
+            this.tbOtchet = new System.Windows.Forms.TextBox();
+            this.btSave = new System.Windows.Forms.Button();
+            this.btDown = new System.Windows.Forms.Button();
+            this.tbFish = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrafik)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,15 +136,6 @@
             this.lbTemp.Text = "Температура";
             this.lbTemp.Click += new System.EventHandler(this.lbTemp_Click);
             // 
-            // tbFish
-            // 
-            this.tbFish.Location = new System.Drawing.Point(126, 13);
-            this.tbFish.Name = "tbFish";
-            this.tbFish.ReadOnly = true;
-            this.tbFish.Size = new System.Drawing.Size(100, 20);
-            this.tbFish.TabIndex = 6;
-            this.tbFish.Text = "Минтай";
-            // 
             // tbMax
             // 
             this.tbMax.Location = new System.Drawing.Point(126, 48);
@@ -208,14 +201,6 @@
             this.lbOtchet.TabIndex = 14;
             this.lbOtchet.Text = "Отчет";
             // 
-            // tbOtchet
-            // 
-            this.tbOtchet.Location = new System.Drawing.Point(25, 222);
-            this.tbOtchet.Name = "tbOtchet";
-            this.tbOtchet.ReadOnly = true;
-            this.tbOtchet.Size = new System.Drawing.Size(531, 20);
-            this.tbOtchet.TabIndex = 15;
-            // 
             // btGraf
             // 
             this.btGraf.Location = new System.Drawing.Point(652, 500);
@@ -237,7 +222,7 @@
             // 
             // btClear
             // 
-            this.btClear.Location = new System.Drawing.Point(652, 407);
+            this.btClear.Location = new System.Drawing.Point(652, 433);
             this.btClear.Name = "btClear";
             this.btClear.Size = new System.Drawing.Size(75, 23);
             this.btClear.TabIndex = 18;
@@ -245,15 +230,56 @@
             this.btClear.UseVisualStyleBackColor = true;
             this.btClear.Click += new System.EventHandler(this.btClear_Click);
             // 
+            // tbOtchet
+            // 
+            this.tbOtchet.Location = new System.Drawing.Point(28, 229);
+            this.tbOtchet.Name = "tbOtchet";
+            this.tbOtchet.ReadOnly = true;
+            this.tbOtchet.Size = new System.Drawing.Size(760, 20);
+            this.tbOtchet.TabIndex = 19;
+            this.tbOtchet.TextChanged += new System.EventHandler(this.tbOtchet_TextChanged);
+            // 
+            // btSave
+            // 
+            this.btSave.Location = new System.Drawing.Point(652, 381);
+            this.btSave.Name = "btSave";
+            this.btSave.Size = new System.Drawing.Size(75, 23);
+            this.btSave.TabIndex = 20;
+            this.btSave.Text = "сохранение";
+            this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
+            // 
+            // btDown
+            // 
+            this.btDown.Location = new System.Drawing.Point(686, 120);
+            this.btDown.Name = "btDown";
+            this.btDown.Size = new System.Drawing.Size(75, 23);
+            this.btDown.TabIndex = 21;
+            this.btDown.Text = "загрузить";
+            this.btDown.UseVisualStyleBackColor = true;
+            this.btDown.Click += new System.EventHandler(this.btDown_Click);
+            // 
+            // tbFish
+            // 
+            this.tbFish.Location = new System.Drawing.Point(126, 13);
+            this.tbFish.Name = "tbFish";
+            this.tbFish.ReadOnly = true;
+            this.tbFish.Size = new System.Drawing.Size(100, 20);
+            this.tbFish.TabIndex = 22;
+            this.tbFish.Text = "Семга";
+            // 
             // Temp_Monitoring_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 573);
+            this.Controls.Add(this.tbFish);
+            this.Controls.Add(this.btDown);
+            this.Controls.Add(this.btSave);
+            this.Controls.Add(this.tbOtchet);
             this.Controls.Add(this.btClear);
             this.Controls.Add(this.mtbDate);
             this.Controls.Add(this.btGraf);
-            this.Controls.Add(this.tbOtchet);
             this.Controls.Add(this.lbOtchet);
             this.Controls.Add(this.tbTemp);
             this.Controls.Add(this.lbTime);
@@ -261,7 +287,6 @@
             this.Controls.Add(this.tbTimeMax);
             this.Controls.Add(this.tbMin);
             this.Controls.Add(this.tbMax);
-            this.Controls.Add(this.tbFish);
             this.Controls.Add(this.lbTemp);
             this.Controls.Add(this.lbDate);
             this.Controls.Add(this.lbMin);
@@ -269,7 +294,7 @@
             this.Controls.Add(this.lbFish);
             this.Controls.Add(this.dgvGrafik);
             this.Name = "Temp_Monitoring_Form";
-            this.Text = "Form1";
+            this.Text = "Temp_Monitoring_Form";
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrafik)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -288,7 +313,6 @@
         private System.Windows.Forms.Label lbMin;
         private System.Windows.Forms.Label lbDate;
         private System.Windows.Forms.Label lbTemp;
-        private System.Windows.Forms.TextBox tbFish;
         private System.Windows.Forms.TextBox tbMax;
         private System.Windows.Forms.TextBox tbMin;
         private System.Windows.Forms.TextBox tbTimeMax;
@@ -296,10 +320,13 @@
         private System.Windows.Forms.Label lbTime;
         private System.Windows.Forms.TextBox tbTemp;
         private System.Windows.Forms.Label lbOtchet;
-        private System.Windows.Forms.TextBox tbOtchet;
         private System.Windows.Forms.Button btGraf;
         private System.Windows.Forms.MaskedTextBox mtbDate;
         private System.Windows.Forms.Button btClear;
+        private System.Windows.Forms.TextBox tbOtchet;
+        private System.Windows.Forms.Button btSave;
+        private System.Windows.Forms.Button btDown;
+        private System.Windows.Forms.TextBox tbFish;
     }
 }
 
