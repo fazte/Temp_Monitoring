@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvGrafik = new System.Windows.Forms.DataGridView();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Norm = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,22 +44,27 @@
             this.tbTimeMax = new System.Windows.Forms.TextBox();
             this.tbTimeMin = new System.Windows.Forms.TextBox();
             this.lbTime = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tbTemp = new System.Windows.Forms.TextBox();
+            this.lbOtchet = new System.Windows.Forms.Label();
+            this.tbOtchet = new System.Windows.Forms.TextBox();
+            this.btGraf = new System.Windows.Forms.Button();
+            this.mtbDate = new System.Windows.Forms.MaskedTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGrafik)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvGrafik
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvGrafik.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGrafik.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.date,
             this.Fact,
             this.Norm,
             this.Otkl_Ot_Normu});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 225);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(544, 150);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvGrafik.Location = new System.Drawing.Point(25, 262);
+            this.dgvGrafik.Name = "dgvGrafik";
+            this.dgvGrafik.Size = new System.Drawing.Size(544, 261);
+            this.dgvGrafik.TabIndex = 0;
+            this.dgvGrafik.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGrafik_CellContentClick);
             // 
             // date
             // 
@@ -85,7 +90,7 @@
             // lbFish
             // 
             this.lbFish.AutoSize = true;
-            this.lbFish.Location = new System.Drawing.Point(22, 26);
+            this.lbFish.Location = new System.Drawing.Point(22, 16);
             this.lbFish.Name = "lbFish";
             this.lbFish.Size = new System.Drawing.Size(57, 13);
             this.lbFish.TabIndex = 1;
@@ -94,7 +99,7 @@
             // lbMax
             // 
             this.lbMax.AutoSize = true;
-            this.lbMax.Location = new System.Drawing.Point(25, 58);
+            this.lbMax.Location = new System.Drawing.Point(25, 48);
             this.lbMax.Name = "lbMax";
             this.lbMax.Size = new System.Drawing.Size(27, 13);
             this.lbMax.TabIndex = 2;
@@ -103,7 +108,7 @@
             // lbMin
             // 
             this.lbMin.AutoSize = true;
-            this.lbMin.Location = new System.Drawing.Point(25, 89);
+            this.lbMin.Location = new System.Drawing.Point(25, 79);
             this.lbMin.Name = "lbMin";
             this.lbMin.Size = new System.Drawing.Size(24, 13);
             this.lbMin.TabIndex = 3;
@@ -121,7 +126,7 @@
             // lbTemp
             // 
             this.lbTemp.AutoSize = true;
-            this.lbTemp.Location = new System.Drawing.Point(25, 163);
+            this.lbTemp.Location = new System.Drawing.Point(24, 160);
             this.lbTemp.Name = "lbTemp";
             this.lbTemp.Size = new System.Drawing.Size(74, 13);
             this.lbTemp.TabIndex = 5;
@@ -130,30 +135,35 @@
             // 
             // tbFish
             // 
-            this.tbFish.Location = new System.Drawing.Point(126, 23);
+            this.tbFish.Location = new System.Drawing.Point(126, 13);
             this.tbFish.Name = "tbFish";
+            this.tbFish.ReadOnly = true;
             this.tbFish.Size = new System.Drawing.Size(100, 20);
             this.tbFish.TabIndex = 6;
+            this.tbFish.Text = "Минтай";
             // 
             // tbMax
             // 
-            this.tbMax.Location = new System.Drawing.Point(126, 58);
+            this.tbMax.Location = new System.Drawing.Point(126, 48);
             this.tbMax.Name = "tbMax";
+            this.tbMax.ReadOnly = true;
             this.tbMax.Size = new System.Drawing.Size(100, 20);
             this.tbMax.TabIndex = 7;
             this.tbMax.Text = "5";
             // 
             // tbMin
             // 
-            this.tbMin.Location = new System.Drawing.Point(126, 89);
+            this.tbMin.Location = new System.Drawing.Point(126, 79);
             this.tbMin.Name = "tbMin";
+            this.tbMin.ReadOnly = true;
             this.tbMin.Size = new System.Drawing.Size(100, 20);
             this.tbMin.TabIndex = 8;
             this.tbMin.Text = "-3";
+            this.tbMin.TextChanged += new System.EventHandler(this.tbMin_TextChanged);
             // 
             // tbTimeMax
             // 
-            this.tbTimeMax.Location = new System.Drawing.Point(280, 58);
+            this.tbTimeMax.Location = new System.Drawing.Point(280, 48);
             this.tbTimeMax.Name = "tbTimeMax";
             this.tbTimeMax.ReadOnly = true;
             this.tbTimeMax.Size = new System.Drawing.Size(100, 20);
@@ -163,7 +173,7 @@
             // 
             // tbTimeMin
             // 
-            this.tbTimeMin.Location = new System.Drawing.Point(280, 89);
+            this.tbTimeMin.Location = new System.Drawing.Point(280, 79);
             this.tbTimeMin.Name = "tbTimeMin";
             this.tbTimeMin.ReadOnly = true;
             this.tbTimeMin.Size = new System.Drawing.Size(100, 20);
@@ -174,25 +184,65 @@
             // lbTime
             // 
             this.lbTime.AutoSize = true;
-            this.lbTime.Location = new System.Drawing.Point(311, 30);
+            this.lbTime.Location = new System.Drawing.Point(311, 20);
             this.lbTime.Name = "lbTime";
             this.lbTime.Size = new System.Drawing.Size(30, 13);
             this.lbTime.TabIndex = 11;
             this.lbTime.Text = "Time";
             // 
-            // textBox1
+            // tbTemp
             // 
-            this.textBox1.Location = new System.Drawing.Point(115, 163);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(662, 20);
-            this.textBox1.TabIndex = 12;
+            this.tbTemp.Location = new System.Drawing.Point(126, 157);
+            this.tbTemp.Name = "tbTemp";
+            this.tbTemp.Size = new System.Drawing.Size(662, 20);
+            this.tbTemp.TabIndex = 12;
+            this.tbTemp.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            // 
+            // lbOtchet
+            // 
+            this.lbOtchet.AutoSize = true;
+            this.lbOtchet.Location = new System.Drawing.Point(25, 194);
+            this.lbOtchet.Name = "lbOtchet";
+            this.lbOtchet.Size = new System.Drawing.Size(36, 13);
+            this.lbOtchet.TabIndex = 14;
+            this.lbOtchet.Text = "Отчет";
+            // 
+            // tbOtchet
+            // 
+            this.tbOtchet.Location = new System.Drawing.Point(25, 222);
+            this.tbOtchet.Name = "tbOtchet";
+            this.tbOtchet.Size = new System.Drawing.Size(531, 20);
+            this.tbOtchet.TabIndex = 15;
+            // 
+            // btGraf
+            // 
+            this.btGraf.Location = new System.Drawing.Point(652, 500);
+            this.btGraf.Name = "btGraf";
+            this.btGraf.Size = new System.Drawing.Size(75, 23);
+            this.btGraf.TabIndex = 16;
+            this.btGraf.Text = "Рассчитать";
+            this.btGraf.UseVisualStyleBackColor = true;
+            this.btGraf.Click += new System.EventHandler(this.btGraf_Click);
+            // 
+            // mtbDate
+            // 
+            this.mtbDate.Location = new System.Drawing.Point(126, 117);
+            this.mtbDate.Mask = "00/00/0000 90:00";
+            this.mtbDate.Name = "mtbDate";
+            this.mtbDate.Size = new System.Drawing.Size(100, 20);
+            this.mtbDate.TabIndex = 17;
+            this.mtbDate.ValidatingType = typeof(System.DateTime);
             // 
             // Temp_Monitoring_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(800, 573);
+            this.Controls.Add(this.mtbDate);
+            this.Controls.Add(this.btGraf);
+            this.Controls.Add(this.tbOtchet);
+            this.Controls.Add(this.lbOtchet);
+            this.Controls.Add(this.tbTemp);
             this.Controls.Add(this.lbTime);
             this.Controls.Add(this.tbTimeMin);
             this.Controls.Add(this.tbTimeMax);
@@ -204,10 +254,10 @@
             this.Controls.Add(this.lbMin);
             this.Controls.Add(this.lbMax);
             this.Controls.Add(this.lbFish);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvGrafik);
             this.Name = "Temp_Monitoring_Form";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGrafik)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,7 +265,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvGrafik;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fact;
         private System.Windows.Forms.DataGridViewTextBoxColumn Norm;
@@ -231,7 +281,11 @@
         private System.Windows.Forms.TextBox tbTimeMax;
         private System.Windows.Forms.TextBox tbTimeMin;
         private System.Windows.Forms.Label lbTime;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbTemp;
+        private System.Windows.Forms.Label lbOtchet;
+        private System.Windows.Forms.TextBox tbOtchet;
+        private System.Windows.Forms.Button btGraf;
+        private System.Windows.Forms.MaskedTextBox mtbDate;
     }
 }
 
