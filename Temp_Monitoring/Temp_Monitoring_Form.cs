@@ -41,8 +41,10 @@ namespace Temp_Monitoring
 
         private void GrafikFish()
         {
-            int a;
+            int norma;
             DateTime time;
+            int maxCount = 0;
+            int minCount = 0;
             try
             {
                 time = Convert.ToDateTime(mtbDate.Text);
@@ -55,7 +57,7 @@ namespace Temp_Monitoring
             try
             {
                 string ss = tbTemp.Text;
-                string[] Temp = ss.Split(',' , '.' , ';');
+                string[] Temp = ss.Split(',' , '.' , ';', ' ');
                 int[] numbers = new int[Temp.Length];
                 for (int i = 0; i < Temp.Length; i++)
                 {
@@ -65,19 +67,28 @@ namespace Temp_Monitoring
                 {
                     if (numbers[i] < 0)
                     {
-                        a = Convert.ToInt32(tbMin.Text);
+                        norma = Convert.ToInt32(tbMin.Text);
                     }
                     else
                     {
-                        a = Convert.ToInt32(tbMax.Text);
+                        norma = Convert.ToInt32(tbMax.Text);
                     }
                     
                     time = time.AddMinutes(10);
                     dgvGrafik.Rows.Add();
                     dgvGrafik[0, i].Value = time;
                     dgvGrafik[1, i].Value = numbers[i];
-                    dgvGrafik[2, i].Value = a;
-                    dgvGrafik[3, i].Value = numbers[i] - a;
+                    dgvGrafik[2, i].Value = norma;
+                    dgvGrafik[3, i].Value = numbers[i] - norma;
+                    /*int count = Convert.ToInt32(dgvGrafik[3, i].Value);
+                    if (numbers[i] > 0 && count > 0 && count <= Convert.ToInt32(tbMax))
+                    {
+                        maxCount += 1;
+                    }
+                    if (numbers[i] < 0 && count < 0 && count >= Convert.ToInt32(tbMin))
+                    {
+                        minCount += 1;
+                    }*/
 
                 }
             }
